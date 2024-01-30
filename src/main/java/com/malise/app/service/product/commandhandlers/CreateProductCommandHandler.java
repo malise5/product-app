@@ -34,7 +34,7 @@ public class CreateProductCommandHandler implements Command<Product, ResponseEnt
     }
     // description
     if (StringUtils.isBlank(product.getDescription())) {
-      throw new ProductNotValidException("Description cannot be Empty");
+      throw new ProductNotValidException("Product Description cannot be Empty");
     }
     // price
     if (product.getPrice() <= 0.0) {
@@ -42,7 +42,7 @@ public class CreateProductCommandHandler implements Command<Product, ResponseEnt
     }
     // quantity
     if (product.getQuantity() <= 0) {
-      throw new ProductNotValidException("Quantity cannot be less than zero");
+      throw new ProductNotValidException("Product Quantity cannot be less than zero");
     }
   }
 
