@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.malise.app.Exceptions.ProductNotFoundException;
 import com.malise.app.model.product.Product;
 import com.malise.app.model.product.ProductDTO;
 import com.malise.app.repository.product.ProductRepository;
@@ -22,7 +23,7 @@ public class GetProductQueryHandler implements Query<Integer, ProductDTO> {
     Optional<Product> product = productRepository.findById(id);
     if (product.isEmpty()) {
       // Throw an exception
-      throw new RuntimeException("Product not found");
+      throw new ProductNotFoundException();
     }
     return ResponseEntity.ok(new ProductDTO(product.get()));
 

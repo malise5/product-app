@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.malise.app.Exceptions.ProductNotValidException;
 import com.malise.app.model.product.Product;
 import com.malise.app.repository.product.ProductRepository;
 import com.malise.app.service.product.Command;
@@ -29,19 +30,19 @@ public class CreateProductCommandHandler implements Command<Product, ResponseEnt
   private void validateProduct(Product product) {
     // name
     if (StringUtils.isBlank(product.getName())) {
-      throw new RuntimeException("Product name cannot be Empty");
+      throw new ProductNotValidException("Product name cannot be Empty");
     }
     // description
     if (StringUtils.isBlank(product.getDescription())) {
-      throw new RuntimeException("Description cannot be Empty");
+      throw new ProductNotValidException("Description cannot be Empty");
     }
     // price
     if (product.getPrice() <= 0.0) {
-      throw new RuntimeException("Price cannot be less than zero");
+      throw new ProductNotValidException("Product Price cannot be less than zero");
     }
     // quantity
     if (product.getQuantity() <= 0) {
-      throw new RuntimeException("Quantity cannot be less than zero");
+      throw new ProductNotValidException("Quantity cannot be less than zero");
     }
   }
 
