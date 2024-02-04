@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.malise.app.Exceptions.ProductNotFoundException;
 import com.malise.app.model.product.Product;
 import com.malise.app.model.product.ProductDTO;
 import com.malise.app.model.product.UpdateProductCommand;
